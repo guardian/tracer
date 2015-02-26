@@ -1,0 +1,5 @@
+
+
+LOAD CSV FROM 'file:///Users/mbutler/work/climate/data/cpd.cvs' AS line
+CREATE (:Company { name: line[0], account_number: toInt(line[1])})
+CREATE (:Country { name: line[2]})
