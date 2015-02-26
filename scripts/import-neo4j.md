@@ -12,3 +12,17 @@ CREATE (company)-[:REPORTED {year: toInt(line.`Reporting Year`)}]->(report)
 MERGE (sector:Sector { name: line.`Sector `})  
 CREATE (company)-[:IN]->(sector)
 ```
+
+### Query sum of USA CO2 emissions
+```
+MATCH (country:Country)--(company:Company)--(report:EmissionReport)
+WHERE country.name = 'USA'
+RETURN sum(report.scope1), sum(report.scope2)
+```
+
+### Sum of all country emissions
+```
+MATCH (country:Country)--(company:Company)--(report:EmissionReport)
+RETURN country.name, sum(report.scope1), sum(report.scope2)
+ORDER BY sum(report.scope2) DESC
+```
