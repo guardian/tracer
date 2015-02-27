@@ -1,5 +1,16 @@
 # tracer
 
+Inferring culpability through the complex web of politics and institutions
+
+## Possibilities
+
+- Investigative journalism tool
+- Find indirect conflicts of interest
+- Create an open dataset of corporate and political interests
+- Crowdsource political-corporate connections
+- Website navigation for topic and profile pages.  
+
+# Demo
 ## Queries for the demo
 
 Companies and their emissions:
@@ -26,4 +37,10 @@ Political parties sum of expenses:
 Link them together:
 
     match (es:EmissionReport)--(c:Company)--(pe:Person)--(p:UKPoliticalParty) return es,c,pe,p
+
+
+## Demo screen grab
+
+![Hack screen grab](screenshots/tracer-hack 2015-02-27 at 15.55.14.png)
+
 
