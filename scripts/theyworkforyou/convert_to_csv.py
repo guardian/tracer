@@ -4,7 +4,7 @@ import time, datetime
 
 members_xml = ET.parse('all-members-2010.xml')
 
-attrs = ['firstname','lastname', 'title', 'party', 'constituency', 'fromdate', 'todate', 'house']
+attrs = ['firstname', 'lastname', 'party', 'constituency', 'fromdate', 'todate', 'house']
 
 members = []
 for member in members_xml.findall('member'):
@@ -12,10 +12,13 @@ for member in members_xml.findall('member'):
 	try:
 		member['fromdate'] = int(time.mktime(datetime.datetime.strptime(member['fromdate'], "%Y-%m-%d").timetuple()))
 		member['todate'] = int(time.mktime(datetime.datetime.strptime(member['todate'], "%Y-%m-%d").timetuple()))
+		member['fullname'] = "%s %s" % (member['firstname'], member['lastname'])
 		members.append(member)
 	except Exception, e:
 		print 'error', member
 		pass
+
+attrs.append('fullname')
 
 with codecs.open('members.csv', 'w', 'utf-8') as outfile:
 	outfile.write(','.join(attrs) + '\n')
