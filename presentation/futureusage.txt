@@ -1,0 +1,8 @@
+So what can we do with this hack? Why do we think its important. 
+
+As you can see neo4j is a very powerful tool.
+
+- Neo4j can be used to help journalists navigate large datasets and discover hidden data. This could help investigative journalism undercover new stories and further investigations into public officials and companies.
+- The guardian could publish open data sets in neo4j to crowd source the discover of hidden data. This data could be feed back to the guardian to be used for investigations.
+- Use of structure data website navigation. For example tag places and profile pages.
+- The graph be used to navigate the web site. i.e. replacing tag clouds for example.

@@ -17,13 +17,17 @@ CREATE (company)-[:IN]->(sector)
 ```
 MATCH (country:Country)--(company:Company)--(report:EmissionReport)
 WHERE country.name = 'USA'
-RETURN sum(report.scope1) AS direct, sum(report.scope2) AS indirect
+WITH sum(report.scope1) AS direct, sum(report.scope2) AS indirect
+CREATE (country)-[:EMITS]->(emit: DirectEmission { name: direct})
+RETURN direct, indirect
 ```
 
 ### Sum of all country emissions
 ```
 MATCH (country:Country)--(company:Company)--(report:EmissionReport)
-RETURN country.name AS country_name, sum(report.scope1) AS direct, sum(report.scope2) AS indirect
+WITH country.name AS country_name, sum(report.scope1) AS direct, sum(report.scope2) AS indirect 
+CREATE (country)-[:EMITS1]->(emission: DirectEmission {name: direct})
+RETURN country_name, direct, indirect
 ORDER BY indirect DESC
 ```
 
